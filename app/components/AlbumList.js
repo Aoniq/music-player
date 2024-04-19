@@ -50,6 +50,8 @@ export default function Albumlist() {
 
     return (
         <div className="w-full flex flex-col overflow-y-scroll h-full justify-start p-2 gap-4 relative">
+            <div className='grid grid-cols-1 gap-4 lg:grid-cols-2'>
+
             {songs.map((song, index) => (
                 <AlbumCard
                     key={index}
@@ -58,6 +60,7 @@ export default function Albumlist() {
                     albumCover={song.albumCover}
                 />
             ))}
+            </div>
                     </div>
     );    
 }

@@ -11,17 +11,13 @@ const NowPlaying = () => {
     // Pause the current song when the nowPlayingSong changes
     useEffect(() => {
         if (audioRef.current) {
+            audioRef.current.pause();
+            audioRef.current.load();
             if (nowPlayingSong) {
-                if (audioRef.current.paused) {
-                    audioRef.current.play();
-                }
-            } else {
-                audioRef.current.pause();
-                audioRef.current.load();
+                audioRef.current.play();
             }
         }
     }, [nowPlayingSong]);
-    
 
     // Render nothing if there is no currently playing song
     if (!nowPlayingSong) {

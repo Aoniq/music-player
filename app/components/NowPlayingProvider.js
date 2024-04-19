@@ -14,9 +14,13 @@ export const NowPlayingProvider = ({ children }) => {
         if (nowPlayingSong === null || song.audio !== nowPlayingSong.audio) {
             // If no song is currently playing or if a different song is selected, start the new one
             setNowPlayingSong(song);
-            setIsPlaying(true);
+            setIsPlaying(true); // Start playing the new song
+        } else {
+            // If the same song is selected, toggle the playback state
+            setIsPlaying(!isPlaying);
         }
     };
+    
     
 
     return (
