@@ -1,5 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { NowPlayingProvider } from "./components/NowPlayingProvider";
+import NowPlaying from "./components/NowPlaying";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +13,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className + " bg-stone-950 flex min-h-screen flex-col items-center justify-center p-8 lg:p-24"}>
+        <div className="flex flex-col items-center bg-stone-900 bg-opacity-50 p-4 rounded-lg w-full lg:w-1/3">
+        <NowPlayingProvider>
+          {children}
+          <NowPlaying /> {/* Render the NowPlaying component */}
+        </NowPlayingProvider>
+        </div>
+        
+      </body>
     </html>
   );
 }
